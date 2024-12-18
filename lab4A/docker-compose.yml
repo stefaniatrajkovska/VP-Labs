@@ -1,0 +1,11 @@
+version: "3"
+services:
+  wp-db:
+    image: "postgres"
+    container_name: "wp2024-events"
+    environment:
+      - POSTGRES_USER=wp
+      - POSTGRES_PASSWORD=wp123
+      - POSTGRES_DB=search-event
+    ports:
+      - "5432:5432"

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <style>
+        body {
+            width: 100%;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f7fc;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-form {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-fields {
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-fields label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .input-fields input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #00c4ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0077ff;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .redirect-link {
+            display: block;
+            margin-top: 20px;
+            color: #0056b3;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .redirect-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-form">
+    <h1>Login Form</h1>
+    <form th:method="POST" th:action="@{/login}">
+        <div class="input-fields">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div class="input-fields">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+
+        <div th:if="${hasError}" class="error">
+            <p th:text="${error}"></p>
+        </div>
+
+        <button class="btn">Sign in</button>
+
+        <a href="/register" class="redirect-link">Don't have an account? Register here!</a>
+    </form>
+</div>
+
+</body>
+</html>

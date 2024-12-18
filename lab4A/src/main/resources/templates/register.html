@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            width: 100%;
+            margin: 0;
+            height: 100vh;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            width: 400px;
+        }
+
+        .input-fields {
+            width: 90%;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-fields label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .input-fields input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #00c4ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0077ff;
+        }
+
+        .error {
+            color: red;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .redirect-link {
+            display: block;
+            margin-top: 15px;
+            color: #0077ff;
+            text-decoration: none;
+        }
+
+        .redirect-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="register-form">
+    <h1>Register</h1>
+    <form th:action="@{/register}" method="post">
+        <div class="input-fields">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div class="input-fields">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="input-fields">
+            <label for="repeatedPassword">Repeat Password:</label>
+            <input type="password" name="repeatedPassword" id="repeatedPassword" required>
+        </div>
+        <div class="input-fields">
+            <label for="name">First Name:</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="input-fields">
+            <label for="surname">Last Name:</label>
+            <input type="text" name="surname" id="surname" required>
+        </div>
+
+        <div th:if="${hasError}" class="error" style="color: red; font-style: italic">
+            <p th:text="${error}"></p>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="/login" class="redirect-link">Already have an account? Login here</a>
+</div>
+
+</body>
+</html>
